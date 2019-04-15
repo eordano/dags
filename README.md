@@ -1,6 +1,6 @@
 # DAG Builder
 
-This simple static website ([demo](https://dagit.now.sh)) alows you to build a DAG with a simple to use interface to create nodes and dependencies between them.
+This simple static website ([demo](https://dags.now.sh)) alows you to build a DAG with a simple to use interface to create nodes and dependencies between them.
 
 It's recommended that you use a large display.
 
