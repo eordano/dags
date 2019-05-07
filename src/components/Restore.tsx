@@ -24,14 +24,9 @@ export default class Restore extends Component<{ onData: (_: any) => any }> {
       reader.readAsText(file)
     }
     render() {
-      return <Segment>
-            <HeaderMenu>
-                <HeaderMenu.Left><Header>Restore</Header></HeaderMenu.Left>
-            </HeaderMenu>
-            <div>
+      return <div>
               <input type='file' onChange={this.update} name='restore' id='restore' className='inputfile' />
               <label className='ui button primary' htmlFor='restore'>Upload a .json file</label>
             </div>
-          </Segment>
     }
 }

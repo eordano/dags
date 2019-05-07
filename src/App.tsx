@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Hero, Logo, Page, Container } from 'decentraland-ui';
+import { Hero, Logo, Page, Container, Button, Header, Segment, HeaderMenu } from 'decentraland-ui';
 
 import 'decentraland-ui/lib/styles.css';
 import './App.css';
@@ -72,7 +72,7 @@ class Controller extends EventEmitter implements Configuration {
     compiled = 'digraph G {  }'
 
     renderItem(item: Item) {
-        return `"${item.id}" [shape=${item.shape || 'box'}${ item.fill ? ',style=filled,fillcolor=' + item.fill : '' }${ item.color ? ',color=' + item.color : '' },label="${item.name}"];`
+        return `"${item.id}" [shape=${item.shape || 'box'},style=filled,fillcolor="${item.fill || '#ffffff' }"${ item.color ? ',color=' + item.color : '' },label="${item.name}"];`
     }
 
     updateGroupMap() {
@@ -246,23 +246,25 @@ class App extends Component<any, Configuration> {
 
     render() {
       return (<Page>
-        <Container>
         <div className='ui grid full height'>
           <div className='one wide column'>
           </div>
           <div className='three wide column'>
-            <Download getData={this.getDownload} />
-            <Restore onData={this.loadData} />
+            <Segment>
+                    <HeaderMenu>
+                        <HeaderMenu.Left><Header>Download</Header></HeaderMenu.Left>
+                    </HeaderMenu>
+                <Download getData={this.getDownload} />
+                <Restore onData={this.loadData} />
+            </Segment>
             <AddItem addItem={this.addItem} />
             <AddGroup addGroup={this.addGroup} />
             <AddDependency items={this.state.items} addDependency={this.addDependency} />
             <ListGroups groups={this.state.groups} updateGroup={this.updateGroup} deleteGroup={this.deleteGroup} />
+            <ListItems items={this.state.items} edges={this.state.edges} groups={this.state.groups} updateItem={this.updateItem} deleteItem={this.deleteItem} deleteEdge={this.deleteEdge} />
             <ExtraContent value={this.state.extra} onChange={this.updateExtra} />
           </div>
-          <div className='three wide column'>
-            <ListItems items={this.state.items} edges={this.state.edges} groups={this.state.groups} updateItem={this.updateItem} deleteItem={this.deleteItem} deleteEdge={this.deleteEdge} />
-          </div>
-          <div className='eight wide column' ref='graph'>
+          <div className='twelve wide column' ref='graph'>
             <Graph compiled={this.state.compiled!} />
           </div>
           <div className='one wide column'/>
@@ -271,7 +273,6 @@ class App extends Component<any, Configuration> {
             <Built value={this.state.compiled!} />
           </div>
         </div>
-        </Container>
         </Page>
       );
     }

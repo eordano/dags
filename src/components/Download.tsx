@@ -17,11 +17,6 @@ function downloadFile(filename: string, text: string) {
 
 export default class Download extends Component<{ getData: any }> {
     render() {
-      return <Segment>
-            <HeaderMenu>
-                <HeaderMenu.Left><Header>Download</Header></HeaderMenu.Left>
-            </HeaderMenu>
-            <Button primary onClick={() => downloadFile('graph.json', this.props.getData())}>Download</Button>
-          </Segment>
+      return <Button primary onClick={() => downloadFile('graph.json', this.props.getData())}>Download</Button>
     }
 }

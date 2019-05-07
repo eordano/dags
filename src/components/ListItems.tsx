@@ -9,6 +9,9 @@ export default class ListItems extends Component<{ items: Item[] } & ItemDetailA
   updateItem = (ev: any, selected: DropdownProps) => this.setState({ selected: selected.value as string })
     render() {
       const mapNames: { [key: string]: string } = {}
+      for (let i of this.props.items) {
+        mapNames[i.id] = i.name
+      }
       return <>
           <Dropdown
             placeholder='Select an item'
