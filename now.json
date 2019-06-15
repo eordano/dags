@@ -1,8 +1,11 @@
 {
-    "name": "dagit",
+    "name": "dags",
     "version": 2,
-    "builds": [
-        { "src": "package.json", "use": "@now/static-build" }
-    ],
+    "builds": [{
+      "src": "package.json",
+      "use": "@now/static-build",
+      "config": { "distDir": "build" }
+    }],
+    "scope": "eordano",
     "alias": ["dags.now.sh"]
 }
